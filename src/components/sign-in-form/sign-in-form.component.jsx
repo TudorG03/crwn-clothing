@@ -22,19 +22,15 @@ const SignInForm = () => {
   };
 
   const signInWithGoogle = async () => {
-    const { user } = await signInWithGooglePopup();
-    await createUserDocumentFromAuth(user);
+    await signInWithGooglePopup();
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
-      const { user } = await signUserInWithEmailAndPassword(email, password);
-      if (user) {
-        alert(`User ${user.email} has been successfully signed in`);
-        resetFormFields();
-      }
+      await signUserInWithEmailAndPassword(email, password);
+      resetFormFields();
     } catch (err) {
       if (err.code === "auth/invalid-login-credentials") {
         alert("Password or email is invalid");

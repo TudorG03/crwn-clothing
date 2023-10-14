@@ -1,14 +1,17 @@
 import { useState } from "react";
-import { createAuthUserWithEmailAndPassword, createUserDocumentFromAuth } from "../../utils/firebase/firebase.utils";
+import {
+  createAuthUserWithEmailAndPassword,
+  createUserDocumentFromAuth,
+} from "../../utils/firebase/firebase.utils";
 import FormInput from "../form-input/form-input.component";
 import Button from "../../components/button/button.component";
-import './sign-up-form.styles.scss';
+import "./sign-up-form.styles.scss";
 
 const defaultFormFields = {
   displayName: "",
   email: "",
   password: "",
-  confirmPassword: ""
+  confirmPassword: "",
 };
 
 const SignUpForm = () => {
@@ -23,26 +26,29 @@ const SignUpForm = () => {
     e.preventDefault();
 
     if (password !== confirmPassword) {
-        alert("Passwords do not match");
-        return;
+      alert("Passwords do not match");
+      return;
     }
-    
+
     try {
-        const { user } = await createAuthUserWithEmailAndPassword(email, password);
-        await createUserDocumentFromAuth(user, { displayName: displayName });
-        resetFormFields();
-    } catch (err) { 
-        if (err.code === 'auth/email-already-in-use') {
-            alert("Email already in use");
-        } else {
-            console.log(err);
-        }
+      const { user } = await createAuthUserWithEmailAndPassword(
+        email,
+        password
+      );
+      await createUserDocumentFromAuth(user, { displayName: displayName });
+      resetFormFields();
+    } catch (err) {
+      if (err.code === "auth/email-already-in-use") {
+        alert("Email already in use");
+      } else {
+        console.log(err);
+      }
     }
   };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormFields({...formFields, [name]: value});
+    setFormFields({ ...formFields, [name]: value });
   };
 
   return (
