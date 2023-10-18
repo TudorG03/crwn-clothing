@@ -8,8 +8,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": true,
-      "cwd": "c:/Users/tudig/Desktop/Coding/Projects Web Development/crwn-clothing",
-      "program": "c:/Users/tudig/Desktop/Coding/Projects Web Development/crwn-clothing/build/Debug/outDebug",
+      "cwd": "c:/Users/tudig/Downloads/Handout2/Handout2/Handout2",
+      "program": "c:/Users/tudig/Downloads/Handout2/Handout2/Handout2/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [
